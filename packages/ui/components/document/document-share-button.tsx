@@ -4,18 +4,18 @@ import { HTMLAttributes } from 'react';
 
 import { Share } from 'lucide-react';
 
+import { useCopyToClipboard } from '@documenso/lib/client-only/hooks/use-copy-to-clipboard';
 import { trpc } from '@documenso/trpc/react';
+import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-import { useCopyToClipboard } from '~/hooks/use-copy-to-clipboard';
-
-export type ShareButtonProps = HTMLAttributes<HTMLButtonElement> & {
+export type DocumentShareButtonProps = HTMLAttributes<HTMLButtonElement> & {
   token: string;
   documentId: number;
 };
 
-export const ShareButton = ({ token, documentId }: ShareButtonProps) => {
+export const DocumentShareButton = ({ token, documentId, className }: DocumentShareButtonProps) => {
   const { toast } = useToast();
   const [, copyToClipboard] = useCopyToClipboard();
 
@@ -39,7 +39,7 @@ export const ShareButton = ({ token, documentId }: ShareButtonProps) => {
   return (
     <Button
       variant="outline"
-      className="flex-1"
+      className={cn('flex-1', className)}
       disabled={!token || !documentId}
       loading={isLoading}
       onClick={onShareClick}
