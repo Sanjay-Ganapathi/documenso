@@ -177,9 +177,8 @@ export const createSinglePlayerDocument = async (
     },
   );
 
-  // Todo: Handle `downloadLink`
   const template = createElement(DocumentSelfSignedEmailTemplate, {
-    downloadLink: `${process.env.NEXT_PUBLIC_MARKETING_URL}/single-player-mode/${documentToken}`,
+    downloadLink: `${process.env.NEXT_PUBLIC_MARKETING_URL}/singleplayer/${documentToken}`,
     documentName: documentName,
     assetBaseUrl: process.env.NEXT_PUBLIC_WEBAPP_URL || 'http://localhost:3000',
   });
